@@ -53,7 +53,7 @@ function setupEventListeners() {
     });
 
     document.querySelector('.user-icon').addEventListener('click', () => {
-        window.open('https://jeffersonrnd.github.io/LOG_SM/', '_blank');
+        window.open('https://simplementee.github.io/LOG_1/', '_blank');
     });
 
     
