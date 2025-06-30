@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PECOS - Clientes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!--Userway-->
+    <script src="https://cdn.userway.org/widget.js" data-account="03sVRfrzlk" data-position="bottom-left"></script>
+</head>
+<body style="background-color: #dfffd6; color: #1b5e20;">
+    <!-- Pantalla cargando-->
+    <div id="loadingScreen" class="loading-screen" style="background-color: rgba(105, 180, 50, 0.85);">
+        <img src="images/logo.png" alt="PECOS" class="loading-logo">
+        <p class="loading-text" style="color: #ffffff;">Cargando...</p>
+    </div>
+
+    <!-- Contenido principal -->
+    <div id="mainContent" class="d-none">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg" style="background-color: #aed581; border-bottom: 2px solid #81c784;">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="images/logo.png" class="logo-img">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link home-icon" href="#"><i class="bi bi-house text-success"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link user-icon" href="#"><i class="bi bi-person text-success"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="search-container">
+                                <input type="text" class="form-control search-input" placeholder="Buscar..." style="background-color: #f1fff0; border: 1px solid #aed581; color: #1b5e20;">
+                                <i class="bi bi-search search-icon" style="color: #66bb6a;"></i>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
+                                <i class="bi bi-cart text-success"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="social-icons">
+                                <a href="https://facebook.com" target="_blank">
+                                    <img src="images/s1.svg" class="social-icon">
+                                </a>
+                                <a href="https://twitter.com" target="_blank">
+                                    <img src="images/s2.svg"  class="social-icon">
+                                </a>
+                                <a href="https://instagram.com" target="_blank">
+                                    <img src="images/s3.svg" class="social-icon">
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Modal para ver los productos agrgados -->
+        <div class="modal fade" id="cartModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #f1fff0; color: #1b5e20;">
+                    <div class="modal-header" style="border-color: #a5d6a7;">
+                        <h5 class="modal-title">Productos agregados</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="cartContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- contenido principal -->
+        <div class="container my-4">
+            <!-- seccion de Ofertas-->
+            <section class="ofertas mb-5">
+                <h2 class="section-title" style="color: #2e7d32;">OFERTAS DE ESTE MES</h2>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="oferta-item" style="background: #f1fff0; border-radius: 8px; padding: 1.5rem; color: #2e7d32;">
+                            <h3>5% DE DCTO.</h3>
+                            <p>Para todos los vegetales.</p>
+                            <img src="images/slider1.png" class="img-fluid mb-3">
+                        </div>
+                        <div class="oferta-item" style="background: #f1fff0; border-radius: 8px; padding: 1.5rem; color: #2e7d32;">
+                            <h3>15% DE DCTO.</h3>
+                            <p>Jamones Razzeto</p>
+                            <img src="images/slider2.png" class="img-fluid mb-3">
+                        </div>
+                        <div class="oferta-item" style="background: #f1fff0; border-radius: 8px; padding: 1.5rem; color: #2e7d32;">
+                            <h3>PREMIOS</h3>
+                            <p>Canasta de productos</p>
+                            <img src="images/slider3.png" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- seccion de categorías -->
+            <section class="categorias mb-5">
+                <h2 class="section-title" style="color: #37903b;">CATEGORÍAS</h2>
+                <p class="text-center mb-4" style="color: #529736;">(Productos en stok)</p>
+                <div class="category-buttons">
+                    <button class="btn btn-outline-success">Abarrotes</button>
+                    <button class="btn btn-outline-success">Licores</button>
+                    <button class="btn btn-outline-success">Limpieza</button>
+                    <button class="btn btn-outline-success">Carnes</button>
+                    <button class="btn btn-success active">Bebidas</button>
+                    <button class="btn btn-outline-success">Panadería</button>
+                </div>
+                <div class="products-grid mt-4" id="productsGrid">
+                </div>
+            </section>
+
+            <!-- seeción de los horarios -->
+            <section class="horarios mb-5">
+                <h2 class="section-title" style="color: #2e7d32;">HORARIOS DE ATENCIÓN</h2>
+                <div class="horario-item" style="color: #1b5e20;">
+                    <p>- LUNES A VIERNES: 6AM - 8PM</p>
+                    <p>- SÁBADO Y DOMINGO: 8AM - 7PM</p>
+                </div>
+            </section>
+
+            <!-- seccion del mapa -->
+            <section class="map-section mb-5">
+                
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d295.01924723526463!2d-78.46256711766237!3d-7.162683721326086!2m3!1f206.09311068787417!2f44.9784888899224!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x91b244d9d5096025%3A0xea0f736f8df6c3eb!2sLloque%20Yupanqui%20298%2C%20Ba%C3%B1os%20del%20Inca%2006004!5e1!3m2!1ses-419!2spe!4v1750727714271!5m2!1ses-419!2spe" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer style="background-color: #a5d6a7; color: #34a33c;" class="py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="images/logo.png" class="footer-logo">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h5>UBICADOS EN</h5>
+                        <p>Lloque Yupanqui N° 298 </p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <h5>CONTÁCTANOS</h5>
+                        <p>989046034</p>
+                        <div class="social-icons">
+                            <a href="https://facebook.com" target="_blank">
+                                <img src="images/s1.svg" class="social-icon">
+                            </a>
+                            <a href="https://twitter.com" target="_blank">
+                                <img src="images/s2.svg"  class="social-icon">
+                            </a>
+                            <a href="https://instagram.com" target="_blank">
+                                <img src="images/s3.svg" class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <p>"MARKET - PECOS" 22/06/2025</p>
+                    <p class="small">
+                        ¡Califícanos en el siguiente enlace! 
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScKRdEE8SpPFmMzo3LIUNJz4ti1TyRepmAb67w_RgW-udH-Cg/viewform?usp=sf_link" target="_blank">Haz clic aquí</a> para dejarnos tu evaluación.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
